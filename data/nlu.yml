@@ -1,0 +1,231 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - hi
+    - hey
+    - hello
+    - good morning
+    - how are you
+    - hola
+    - good evening
+    - whats up
+    - Hello
+    - Hey
+    - Hello 
+    - Hey
+    - sup
+- intent: buy_phone_laptop
+  examples: |
+    - I want [phone](category)
+    - I would like to buy a [phone](category)
+    - I want to buy a [laptop](category)
+    - Please suggest me a good [laptop](category)
+    - I wanted to purchase a [phone](category)
+    - Can you recommend me a [laptop](category)
+    - give me some recommendations for [mobile](category)
+    - Can you suggest a [laptop](category)
+    - I wanna buy a [mobile](category)
+    - Im interested in purchasing a [phone](category)
+    - I wanted to buy a [refrigerator](category)
+    - show me a good [air conditioner](category)
+    - please recommend me a [washing machine](category)
+    - want to buy [phone](category)
+    - /buy_phone_laptop{"category":"phone"}
+    - want to buy [laptop](category)
+- intent: ask_residence
+  examples: |
+    - where do you live
+    - in which city do you live
+    - whats your residence
+    - wheres your home
+    - wheres your house
+    - your city
+    - your town
+    - whats your hometown
+    - where do you stay
+    - where's your residence
+    - what is your city
+    - where are you staying
+    - wer do u stay
+    - where can i find you
+- intent: latest_news_phones_laptops
+  examples: |
+    - Whats the latest news with [phones](category)
+    - Can you tell me about the trends regarding [phones](category)
+    - Whats going in the tech world for [laptops](category)
+    - Can you show me the trends in [laptops](category)
+    - Any new releases for [mobiles](category), whats the news
+    - update me on the [mobile](category) news
+    - show me the latest news for [mobiles](category)
+- intent: out_of_scope
+  examples: |
+    - blablablablalblab
+    - asdasdasdasd
+    - hmmmmmm
+    - hahahha
+    - ..
+    - where are you
+    - what do you
+    - what else can you do
+    - whats the weather update
+    - im sleeping
+- intent: goodbye
+  examples: |
+    - goodbye
+    - ciao
+    - c u around
+    - bye
+    - c ya
+    - c u
+    - talk to you later
+    - see you around
+- intent: give_information
+  examples: |
+    - I'm looking for 8 GB RAM
+    - I would like 10 GB RAM
+    - I want a camera of 65 megapixel
+    - I'm looking for 15 megapixel
+    - 25 megapixel
+    - I was looking for 4000 mah battery backup
+    - 3500 mah
+    - around 16 GB RAM
+    - 8 GB RAM
+    - Well around 50 megapixel
+    - I am looking for 5000 mah  battery
+    - Well the battery should be 4300 mah
+    - Well I would like 25 mp camera
+    - A camera of 40 mp
+    - around 8 GB RAM
+    - 4 GB RAM
+    - 5000 mah
+    - 3000 mah
+    - 25 mp
+    - I want 3500 mah battery
+    - 50
+    - 25
+    - 8
+    - 5000
+    - 7000
+    - 5 gb
+    - 10 hrs
+    - 4000 mah
+    - 4
+- intent: budget_available
+  examples: |
+    - my budget is around 400 usd
+    - Well I can spend around 300 usd
+    - my total spending on the phone can be 250 usd
+    - I can shell out approx 450 usd
+    - well its around 500 usd
+    - 600 usd
+- intent: weather_for_location
+  examples: |
+    - what is the weather in [London](location)
+    - weather in [New Delhi](location)
+    - weather of [Islamabad](location)
+    - Today's weather in [Karachi](location)
+    - [Beijing](location) weather
+    - Tell me weather of [Kabul](location)
+    - Can you tell me weather of [Tehran](location)
+    - [Canberra](location) weather today
+    - [Sydney](location) weather
+    - weather in [Islamabad](location)
+    - weather in [Tehran](location)
+    - weather of [Dhaka](location)
+- intent: current_time
+  examples: |
+    - what time is it
+    - time
+    - current time
+    - can you tell me the time
+    - tell me time
+    - what is current time
+- intent: fun_jokes
+  examples: |
+    - Do you know a joke?
+    - Tell me a joke
+    - joke
+    - i am sad
+    - Are you good at jokes
+    - know a joke
+    - I want to hear a joke
+    - lets here a joke
+    - do you know joke
+    - Are you good at jokes ?
+    - good at jokes ?
+    - another joke
+- intent: about_msg
+  examples: |
+    - Who made you ?
+    - Who programmed you?
+    - your name
+    - what is your name
+    - who is your boss
+    - are you human
+    - are you robot
+    - are you a chatbot
+    - what platform you built on
+    - who built you
+    - who are you
+    - who programmed you
+    - who made you
+- intent: thanks
+  examples: |
+    - you are the best
+    - you are awesome
+    - thanks
+    - thanks for help
+    - you are helpful
+    - appreciate your effort
+- intent: covid_Details
+  examples: |
+    - covid details for [Pakistan](country)
+    - what are covid stats in [India](country)
+    - what is covid condition in [Amercia](country)
+    - How many covid cases are in [China](country)
+    - How many patients recoverd from covid in [Japan](country)
+    - How many deaths due to covid in [India](country)
+    - covid stats in [Iran](country)
+    - covid [Italy](country)
+    - covid condition[Spain](country)
+    - covid conditions in [pakistan](country)
+    - covid in France
+    - covid cases in [japan](country)
+    - covid in Iraq
+    - Covid cases in France
+    - Covid stats in [Amercia](country)
+    - covid in Nepal
+    - Covid in Nepal
+    - Covid cases in Nepal
+
+- intent: USB_Search
+  examples: |
+    - I want [USB](usb).
+    - [USB](usb)
+    - [USB](usb) available ?
+    - You have a [USB](usb)
+    - Is there [USB](usb) available ?
+    - Do you have any [USB](usb).
+    - Want [USB](usb).
+    - Search [USB](usb) for me.
+    - search [USB](usb)
+    - find [USB](usb)
+
+- intent: SD_Search
+  examples: |
+    - I want [SD card](SD_Card).
+    - [SD card](SD_Card)
+    - [SD card](SD_Card) available ?
+    - You have a [SD card](SD_Card)
+    - Is there [SD card](SD_Card) available ?
+    - Do you have any [SD card](SD_Card).
+    - Want [SD card](SD_Card).
+    - Search [SD card](SD_Card) for me.
+    - search [SD card](SD_Card)
+    - find [SD card](SD_Card)
+- synonym: phone
+  examples: |
+    - mobile
+    - mobiles
+    - smartphone

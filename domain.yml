@@ -1,0 +1,238 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false
+intents:
+- greet:
+    use_entities: true
+- buy_phone_laptop:
+    use_entities: true
+- latest_news_phones_laptops:
+    use_entities: true
+- ask_residence:
+    triggers: action_your_residence
+    use_entities: true
+- give_information:
+    use_entities: true
+- goodbye:
+    triggers: action_Goodbye
+    use_entities: true
+- budget_available:
+    use_entities: true
+- out_of_scope:
+    use_entities: true
+- weather_for_location:
+    triggers: action_get_weather
+    use_entities: true
+- current_time:
+    triggers: action_get_time
+    use_entities: true
+- fun_jokes:
+    triggers: action_get_joke
+    use_entities: true
+- about_msg:
+    use_entities: true
+- thanks:
+    use_entities: true
+- covid_Details:
+    use_entities: true
+- USB_Search:
+    triggers: action_usbSearch
+    use_entities: true
+- SD_Search:
+    use_entities: true
+entities:
+- category
+- country
+- location
+- SD_Card
+- usb
+slots:
+  battery:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  battery_backup:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  budget:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  camera:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  category:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: phone
+    auto_fill: true
+    influence_conversation: true
+  country:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  location:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  ram:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  requested_slot:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  storage_capacity:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+responses:
+  utter_how_can_I_help:
+  - text: Welcome. I'm your shopping bot. I can help you with finding a phone.
+  utter_ask_ram:
+  - text: How much GB RAM are you looking for?
+  utter_ask_camera:
+  - text: What megapixel minimum camera are you looking for?
+  utter_ask_battery:
+  - text: How much mimimum battery capacity are you looking for in the mobile?
+  utter_ask_budget:
+  - text: Whats your budget?
+  utter_wrong_budget:
+  - text: Please enter the budget in PKR and below 250000.
+  utter_wrong_ram:
+  - text: Please enter the correct value for ram.
+  utter_wrong_battery:
+  - text: Please enter the correct value for battery.
+  utter_wrong_camera:
+  - text: PLease enter the correct value for camera.
+  utter_ask_battery_backup:
+  - text: Whats the minimum battery backup you are looking at?
+  utter_ask_storage_capacity:
+  - text: Whats the storage capacity you are looking for?
+  utter_wrong_battery_backup:
+  - text: Please enter correct value for battery backup (in hours).
+  utter_wrong_storage_capacity:
+  - text: Please enter correct storage capacity in GBs.
+  utter_fallback:
+  - buttons:
+    - payload: /buy_phone_laptop{"category":"phone"}
+      title: Buy Phone
+    - payload: /buy_phone_laptop{"category":"laptop"}
+      title: Buy Laptop
+    - payload: /latest_news_phones_laptops{"category":"phone"}
+      title: Mobile news
+    - payload: /latest_news_phones_laptops{"category":"laptop"}
+      title: Laptop news
+    - payload: /goodbye
+      title: Goodbye
+    text: Sorry! I couldn't get you! Please use one of the following options.
+  utter_select_next:
+  - buttons:
+    - payload: /buy_phone_laptop{"category":"phone"}
+      title: Buy Phone
+    - payload: /buy_phone_laptop{"category":"laptop"}
+      title: Buy Laptop
+    - payload: /latest_news_phones_laptops{"category":"phone"}
+      title: Mobile news
+    - payload: /latest_news_phones_laptops{"category":"laptop"}
+      title: Laptop news
+    - payload: /goodbye
+      title: Goodbye
+    text: Please select what you want to do next.
+  utter_residence:
+  - text: I live in this app all day long.
+  - text: The virtual world is my playground. I'm always here.
+  - text: Right here in this app. Whenever you need me.
+  utter_joke:
+  - text: |-
+      Why did the teddy bear say no to dessert?
+      Because she was stuffed.
+  - text: |-
+      Why did the student eat his homework? '
+      Because the teacher told him it was a piece of cake!
+  - text: |-
+      Why was the baby strawberry crying?
+      Because her parents were in a jam.
+  - text: |-
+      How do we know that the ocean is friendly?
+      It waves!
+  - text: |-
+      What’s worse than finding a worm in your apple?
+      Finding half a worm.
+  - text: |-
+      What time is it when the clock strikes 13?
+      Time to get a new clock.
+  utter_about:
+  - text: I'm a chatbot programmed by Hamza x Abdullah.
+  - text: Hamza x Abdullah developed me on RASA STACK architecture.
+  - text: I am online shopping bot made using rasa.
+  - text: I am rasa based chatbot programmed by Hamza x Abdullah.
+  utter_thanks:
+  - text: Welcome!!!
+  - text: Love to hear positive words.
+  - text: You're welcome.
+  - text: Glad to help
+  - text: My pleasure.
+  utter_country_not_found:
+  - text: Unable to find country.
+  - text: Pardon me I didn't get the country. Can you repeat the sentence.
+  - text: Country not exists.
+  - text: Something wrong with Country's spelling.
+  utter_goodbye:
+  - text: Take care.
+  - text: Bye, Take care.
+  - text: Thank you for stopping here Good Bye
+  - text: It was great talking to you! Goodbye!!
+actions:
+- utter_how_can_I_help
+- utter_ask_ram
+- utter_ask_camera
+- utter_ask_battery
+- utter_ask_budget
+- utter_wrong_camera
+- utter_wrong_battery
+- utter_wrong_ram
+- utter_wrong_budget
+- utter_goodbye
+- utter_thanks
+- utter_ask_battery_backup
+- utter_ask_storage_capacity
+- utter_wrong_battery_backup
+- utter_wrong_storage_capacity
+- utter_fallback
+- utter_joke
+- utter_residence
+- utter_select_next
+- utter_country_not_found
+- utter_about
+- utter_bye
+- action_search
+- action_show_latest_news
+- action_my_fallback
+- action_your_residence
+- action_get_weather
+- action_get_time
+- action_get_joke
+- action_usbSearch
+- action_covid_details
+- action_Goodbye
+- product_search_form
+- action_sdSearch
+forms:
+  product_search_form:
+    required_slots: {}
+e2e_actions: []

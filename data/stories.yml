@@ -1,0 +1,469 @@
+version: "2.0"
+stories:
+- story: greet + show_phones
+  steps:
+  - intent: greet
+  - action: utter_how_can_I_help
+  - intent: buy_phone_laptop
+    entities:
+    - category: phone
+  - action: product_search_form
+  - active_loop: product_search_form
+  - active_loop: null
+  - intent: goodbye
+  - action: utter_goodbye
+- story: greet + show_phones_featurized_slots
+  steps:
+  - intent: greet
+  - action: utter_how_can_I_help
+  - intent: buy_phone_laptop
+    entities:
+    - category: phone
+  - slot_was_set:
+    - category: phone
+  - action: product_search_form
+  - active_loop: product_search_form
+  - slot_was_set:
+    - requested_slot: ram
+  - intent: goodbye
+  - action: product_search_form
+  - slot_was_set:
+    - ram: null
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - ram: null
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - ram: 8
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - battery: 6000
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - camera: 50
+  - intent: give_information
+  - action: product_search_form
+  - active_loop: null
+  - slot_was_set:
+    - budget: 500
+  - intent: goodbye
+  - action: utter_goodbye
+  - intent: out_of_scope
+  - action: action_my_fallback
+- story: greet + fallback + search + news
+  steps:
+  - intent: greet
+  - action: utter_how_can_I_help
+  - intent: goodbye
+  - action: action_my_fallback
+  - slot_was_set:
+    - category: laptop
+  - intent: buy_phone_laptop
+    entities:
+    - category: laptop
+  - action: product_search_form
+  - active_loop: product_search_form
+  - slot_was_set:
+    - requested_slot: ram
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - ram: 4
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - battery_backup: 10 hours
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - storage_capacity: 256 GB
+  - intent: give_information
+  - action: product_search_form
+  - active_loop: null
+  - slot_was_set:
+    - budget: 500
+  - intent: out_of_scope
+  - action: action_my_fallback
+  - slot_was_set:
+    - category: laptop
+  - intent: latest_news_phones_laptops
+    entities:
+    - category: laptop
+  - action: action_show_latest_news
+  - intent: goodbye
+  - action: utter_goodbye
+- story: greet + featurized_slots_laptops
+  steps:
+  - intent: greet
+  - action: utter_how_can_I_help
+  - slot_was_set:
+    - category: laptop
+  - intent: buy_phone_laptop
+    entities:
+    - category: laptop
+  - action: product_search_form
+  - active_loop: product_search_form
+  - slot_was_set:
+    - requested_slot: ram
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - ram: 8
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - battery_backup: 8 hours
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - storage_capacity: 256 GB
+  - intent: give_information
+  - action: product_search_form
+  - active_loop: null
+  - slot_was_set:
+    - budget: 800
+- story: greet + featurized_slots_laptops
+  steps:
+  - intent: greet
+  - action: utter_how_can_I_help
+  - slot_was_set:
+    - category: laptop
+  - intent: buy_phone_laptop
+    entities:
+    - category: laptop
+  - action: product_search_form
+  - active_loop: product_search_form
+  - slot_was_set:
+    - requested_slot: ram
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - ram: 8
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - battery_backup: '9'
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - storage_capacity: '256'
+  - intent: give_information
+  - action: product_search_form
+  - active_loop: null
+  - slot_was_set:
+    - budget: 800
+- story: greet + show_latest_news
+  steps:
+  - intent: greet
+  - action: utter_how_can_I_help
+  - intent: latest_news_phones_laptops
+    entities:
+    - category: phone
+  - action: action_show_latest_news
+  - intent: goodbye
+  - action: utter_goodbye
+- story: out_of_scope_intent
+  steps:
+  - intent: out_of_scope
+  - action: action_my_fallback
+- story: out_of_scope_intent
+  steps:
+  - intent: out_of_scope
+  - action: action_my_fallback
+- story: Story from Conversation ID f4b9f2b265fa426eadef92b18c245eb7
+  steps:
+  - intent: greet
+  - action: utter_how_can_I_help
+  - slot_was_set:
+    - category: phone
+  - intent: buy_phone_laptop
+    entities:
+    - category: phone
+  - action: product_search_form
+  - active_loop: product_search_form
+  - slot_was_set:
+    - requested_slot: ram
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - ram: 6
+  - intent: out_of_scope
+  - action: product_search_form
+  - slot_was_set:
+    - battery: null
+  - intent: ask_residence
+  - action: action_your_residence
+  - action: product_search_form
+  - slot_was_set:
+    - requested_slot: battery
+  - slot_was_set:
+    - location: Islamabad
+  - intent: weather_for_location
+    entities:
+    - location: Islamabad
+  - action: action_get_weather
+  - action: product_search_form
+  - slot_was_set:
+    - requested_slot: battery
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - battery: 10
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - camera: 64
+  - intent: give_information
+  - action: product_search_form
+  - active_loop: null
+  - slot_was_set:
+    - budget: 500
+  - intent: ask_residence
+  - action: action_your_residence
+- story: Story from Conversation ID 6d3ef5982cc747c3b492e74183a31d5e
+  steps:
+  - intent: fun_jokes
+  - action: action_get_joke
+- story: Story
+  steps:
+  - intent: about_msg
+  - action: utter_about
+- story: Story from Conversation ID d8582eb853814cb899e7935130922320
+  steps:
+  - intent: greet
+  - action: utter_how_can_I_help
+  - intent: current_time
+  - action: action_get_time
+  - intent: weather_for_location
+  - action: action_get_weather
+  - intent: about_msg
+  - action: utter_about
+  - intent: about_msg
+  - action: utter_about
+- story: Story from Conversation ID 6b30279adaeb4e88ab1ffaf027e580a1
+  steps:
+  - intent: about_msg
+  - slot_was_set:
+    - location: Islamabad
+  - intent: weather_for_location
+    entities:
+    - location: Islamabad
+  - action: action_get_weather
+  - intent: fun_jokes
+  - action: action_get_joke
+- story: Story from Conversation ID eef91b01ce3b4519a3573400250eef98
+  steps:
+  - intent: fun_jokes
+  - action: action_get_joke
+  - intent: fun_jokes
+  - action: action_get_joke
+  - intent: fun_jokes
+  - action: action_get_joke
+  - slot_was_set:
+    - location: karachi
+  - intent: weather_for_location
+    entities:
+    - location: karachi
+  - action: action_get_weather
+  - intent: about_msg
+  - action: utter_about
+  - intent: about_msg
+  - action: utter_about
+  - intent: current_time
+  - action: action_get_time
+- story: Thank You
+  steps:
+  - intent: thanks
+  - action: utter_thanks
+- story: Story from Conversation ID d026c287d6e44bb0ab8c29539333d12c
+  steps:
+  - intent: about_msg
+  - action: utter_about
+- story: Story from Conversation ID feeeaadff2cf48a28b3a80a355629f2f
+  steps:
+  - intent: about_msg
+  - action: utter_about
+  - intent: about_msg
+  - action: utter_about
+  - intent: about_msg
+  - action: utter_about
+  - intent: about_msg
+  - action: utter_about
+  - slot_was_set:
+    - location: islamabad
+  - intent: weather_for_location
+    entities:
+    - location: islamabad
+  - action: action_get_weather
+  - intent: current_time
+  - action: action_get_time
+  - intent: current_time
+  - action: action_get_time
+  - intent: current_time
+  - action: action_get_time
+- story: Story from Conversation ID 33eaad67b6df49e2bc1d1417489bec2a
+  steps:
+  - slot_was_set:
+    - country: Pakistan
+  - intent: covid_Details
+    entities:
+    - country: Pakistan
+  - action: action_covid_details
+- story: Story from Conversation ID 402a713cd2ef4ee2ac0e83a299c145fc
+  steps:
+  - slot_was_set:
+    - country: japan
+  - intent: covid_Details
+    entities:
+    - country: japan
+  - action: action_covid_details
+  - slot_was_set:
+    - country: japan
+  - intent: covid_Details
+    entities:
+    - country: japan
+  - action: action_covid_details
+- story: Story from Conversation ID 52c65796c4be4d768f640379e1c7da7c
+  steps:
+  - intent: covid_Details
+  - action: action_covid_details
+  - intent: covid_Details
+  - action: action_covid_details
+  - intent: covid_Details
+  - action: action_covid_details
+- story: Story from Conversation ID 26c6acf331584abdb6c3295b414b686b
+  steps:
+  - intent: covid_Details
+  - action: action_covid_details
+  - slot_was_set:
+    - country: Amercia
+  - intent: covid_Details
+    entities:
+    - country: Amercia
+  - action: action_covid_details
+- story: Story from Conversation ID dc603b5963d041b1997d4c6e94701156
+  steps:
+  - intent: greet
+  - action: utter_how_can_I_help
+  - intent: greet
+  - action: utter_how_can_I_help
+  - intent: greet
+- story: Story from Conversation ID 989036079e9a4589a5a74b560e092b1f
+  steps:
+  - intent: covid_Details
+  - action: action_covid_details
+- story: Story from Conversation ID dc0ca403d6ea4a62b66bf67fde9444e0
+  steps:
+  - intent: weather_for_location
+  - action: action_get_weather
+  - slot_was_set:
+    - location: Lahore
+  - intent: covid_Details
+  - action: action_covid_details
+  - slot_was_set:
+    - country: Cambodia
+- story: Story from Conversation ID 9e0e6ace34794e95bbd3f53d5fb4e79a
+  steps:
+  - slot_was_set:
+    - category: phone
+  - intent: buy_phone_laptop
+    entities:
+    - category: phone
+  - action: product_search_form
+  - active_loop: product_search_form
+  - slot_was_set:
+    - requested_slot: ram
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - ram: 4
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - battery: 4000
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - camera: 13
+  - intent: give_information
+  - action: product_search_form
+  - active_loop: null
+  - slot_was_set:
+    - budget: 450
+- story: Story from Conversation ID a5885ddd3ef8409880420817dc24d883
+  steps:
+  - slot_was_set:
+    - category: phone
+  - intent: buy_phone_laptop
+    entities:
+    - category: phone
+  - action: product_search_form
+  - active_loop: product_search_form
+  - slot_was_set:
+    - requested_slot: ram
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - ram: 4
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - battery: 4000
+  - intent: give_information
+  - action: product_search_form
+  - slot_was_set:
+    - camera: 13
+  - intent: out_of_scope
+  - action: product_search_form
+  - active_loop: null
+  - slot_was_set:
+    - budget: 450
+- story: USB Story1
+  steps:
+  - intent: greet
+  - action: utter_how_can_I_help
+  - intent: USB_Search
+  - action: action_usbSearch
+- story: USB Story2
+  steps:
+  - intent: USB_Search
+  - action: action_usbSearch
+- story: USB Story3
+  steps:
+  - intent: USB_Search
+  - action: action_usbSearch
+- story: Story from Conversation ID 44409d6ce8e3460a8bce91a6a3bd8898
+  steps:
+  - intent: USB_Search
+  - action: action_usbSearch
+  - intent: USB_Search
+  - action: action_usbSearch
+  - intent: USB_Search
+  - action: action_usbSearch
+
+- story: SD Story1
+  steps:
+  - intent: greet
+  - action: utter_how_can_I_help
+  - intent: SD_Search
+  - action: action_sdSearch
+- story: SD Story2
+  steps:
+  - intent: SD_Search
+  - action: action_sdSearch
+- story: SD Story3
+  steps:
+  - intent: SD_Search
+  - action: action_sdSearch
+- story: SD
+  steps:
+  - intent: SD_Search
+  - action: action_sdSearch
+  - intent: SD_Search
+  - action: action_sdSearch
+  - intent: SD_Search
+  - action: action_sdSearch
